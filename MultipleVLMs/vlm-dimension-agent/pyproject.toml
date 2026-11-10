@@ -1,0 +1,38 @@
+[project]
+name = "vlm-dimension-agent"
+version = "0.1.0"
+description = "Estimate object dimensions (W/H/D) from 3-5 photos using open-weight VLMs, via a 4-agent reasoning pipeline."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pillow>=10.0.0",
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "torch>=2.2.0",
+    "torchvision>=0.17.0",
+    "transformers>=4.49.0",
+    "accelerate>=0.30.0",
+]
+
+[project.optional-dependencies]
+# Local Apple Silicon runtime (4-bit quantized models). Installs only on macOS/arm.
+mlx = [
+    "mlx-vlm>=0.1.0 ; sys_platform == 'darwin' and platform_machine == 'arm64'",
+]
+# Some models (InternVL3, MiniCPM-V) need these for their remote code / fast tokenizers.
+remote = [
+    "einops>=0.7.0",
+    "timm>=0.9.0",
+    "sentencepiece>=0.2.0",
+]
+# Optional NVIDIA 4-bit quantization for the transformers backend.
+cuda-quant = [
+    "bitsandbytes>=0.43.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agents", "models", "schemas", "utils"]

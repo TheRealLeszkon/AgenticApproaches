@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+
+# Secrets
+.env
+
+# Run artifacts (intermediate + final JSON per run)
+runs/*/
+!runs/.gitkeep
+
+# Local results
+result.json
+benchmark_results.*

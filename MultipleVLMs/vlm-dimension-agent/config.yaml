@@ -1,0 +1,16 @@
+# Default configuration for vlm-dimension-agent.
+# CLI flags and VLM_* env vars override these.
+
+model: qwen3-vl-8b        # friendly name; see models/base.py REGISTRY
+backend: transformers     # transformers | mlx   (mlx = local Apple Silicon, 4-bit)
+device: auto              # auto | cpu | cuda | mps
+dtype: bfloat16           # bfloat16 | float16 | float32   (transformers backend)
+quantization: null        # null | 4bit   (transformers + bitsandbytes, CUDA only)
+
+# Image handling: only downscale when the longest side exceeds this many pixels.
+# Set to null to keep native resolution (best for reading small scale references).
+max_image_side: 1536
+
+temperature: 0.2
+max_tokens: 4096
+output_dir: runs

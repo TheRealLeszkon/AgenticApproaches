@@ -1,0 +1,16 @@
+# pip fallback (mirrors pyproject.toml core deps). Prefer `uv sync` where possible.
+pillow>=10.0.0
+pydantic>=2.0.0
+pyyaml>=6.0
+torch>=2.2.0
+torchvision>=0.17.0
+transformers>=4.49.0
+accelerate>=0.30.0
+
+# --- Optional extras (install as needed) ---
+# Local Apple Silicon (4-bit) runtime:
+#   pip install "mlx-vlm>=0.1.0"          # macOS arm64 only
+# InternVL3 / MiniCPM-V remote code:
+#   pip install einops timm sentencepiece
+# NVIDIA 4-bit quantization (transformers backend):
+#   pip install bitsandbytes
